@@ -18,3 +18,18 @@ function convertObjToJson(obj, arr) {
 	var json = eval("(" + jsonStr + ")");
 	return json;
 }
+/**
+ * 字符串首字母大写
+ * @param str 需要大写的字符串
+ * @author   li 
+ * @date     2016-03-16 14:44:20
+ * @version  1.0 
+ * @see      http://blog.csdn.net/apensu/article/details/7332776    
+ * @returns
+ */
+function strFirstUper(str)
+{
+	return str.replace(/\b(\w)|\s(\w)/g, function(m){  
+        return m.toUpperCase();  
+    });    
+}
