@@ -1,6 +1,8 @@
-package com.code.util;
+package com.code.kuaituo.kuaiche.devhelp;
 
 import java.util.Scanner;
+
+import com.code.util.StringUtil;
 
 /**
  * 通过excel产生class excel 格式 注释 字段名 类型
@@ -15,8 +17,8 @@ public class GenerateClassByExcel {
 	public String generateClassByExcel() {
 
 		Scanner sc = new Scanner(System.in);
-		String line = "";
 		StringBuffer sb = new StringBuffer();
+		String line = "";
 		line = sc.nextLine();
 		while (line != null && !"".equals(line.trim())) {
 			String[] words = line.split("\\t");
@@ -36,43 +38,11 @@ public class GenerateClassByExcel {
 			}
 
 			// 处理
-
-			sb.append("/**\n" + words[0] + "\n*/\nprivate " + type + " " + dealWordRmUnderLine(words[1]) + ";\n");
+			sb.append("/**\n" + words[0] + "\n*/\nprivate " + type + " " + StringUtil.dealWordRmUnderLine(words[1])
+					+ ";\n");
 			line = sc.nextLine();
 		}
 		return sb.toString();
-	}
-
-	// TODO 后续通过正则表达式改写该代码
-	/**
-	 *
-	 * 删除一个单词中的下划线，并将其后字母大写
-	 * 
-	 * @param word
-	 * @return
-	 * 
-	 */
-	public String dealWordRmUnderLine(String word) {
-		String[] words = word.split("_");
-		StringBuffer sb = new StringBuffer(words[0]);
-		for (int i = 1; i < words.length; i++) {
-			String w = words[i];
-			sb.append(captureName(w));
-		}
-		return sb.toString();
-	}
-
-	/**
-	 * 首字母大写 {@code 将ASCII前移}
-	 * 
-	 * @param name
-	 * @return
-	 */
-	public String captureName(String name) {
-		char[] cs = name.toCharArray();
-		cs[0] -= 32;
-		return String.valueOf(cs);
-
 	}
 
 	public static void main(String[] args) {
