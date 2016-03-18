@@ -35,6 +35,24 @@ function strFirstUper(str)
 }
 
 /**
+ * 
+ *<title>将单词中的非开头的大写字母替换成小写字母并将前面加上下划线<title>
+ *<code>helloWord->hello_word<code>
+ * @author   li 
+ * @date     2016-03-17 14:12:04
+ * @version  1.0 
+ * @see       
+ * @param str
+ * @returns
+ */
+function strUperToLower(str)
+{
+	return str.replace(/\B[A-Z]/g, function(m){  
+        return "_"+m.toLowerCase();  
+    });    
+}
+
+/**
  *
  * 通过json 对表单赋值
  * @author   li 
